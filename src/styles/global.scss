@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --white: #fff; // Text
+  --gray-100: #afafaf;
+  --gray-200: #525252; //Divisor
+  --gray-700: #15171b; // Bg Body
+  --gray-900: #111113; // Bg Header
+  --blue-900: #1fa4e5; // CTA - Buttons
+  --yellow-500: #ffbe16; // Warning
+}
+
+@media (max-width: 1080px) {
+  html {
+    font-size: 93.75%; // 15px
+  }
+}
+
+@media (max-width: 720) {
+  html {
+    font-size: 87.5%; // 14px
+  }
+}
+
+body {
+  background-color: var(--gray-700);
+}
+
+body,
+input,
+textarea,
+select,
+button {
+  font: 400 1rem "Poppins", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
