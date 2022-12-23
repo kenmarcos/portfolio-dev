@@ -17,7 +17,7 @@
       img {
         cursor: pointer;
         height: 100%;
-        width: 180px;
+        max-width: 200px;
       }
     }
 
@@ -39,7 +39,7 @@
           }
 
           &.active {
-            color: var(--yellow-500);
+            color: var(--blue-700);
             font-weight: bold;
           }
         }

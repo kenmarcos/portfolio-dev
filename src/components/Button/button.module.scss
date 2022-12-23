@@ -1,0 +1,36 @@
+@mixin defaultStyles() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  border-radius: 1rem;
+  font-weight: bold;
+  transition: all 0.2s;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.primary {
+  @include defaultStyles();
+  border-color: var(--blue-700);
+  background-color: var(--blue-700);
+  color: var(--white);
+
+  &:hover {
+    filter: brightness(0.7);
+  }
+}
+
+.outline {
+  @include defaultStyles();
+  border-color: var(--blue-700);
+  background-color: transparent;
+  color: var(--blue-700);
+  gap: 1rem;
+
+  &:hover {
+    border-color: var(--white);
+    background-color: var(--white);
+    color: var(--gray-200);
+  }
+}

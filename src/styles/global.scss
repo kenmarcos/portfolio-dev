@@ -5,12 +5,12 @@
 }
 
 :root {
-  --white: #fff; // Text
+  --white: #f6f6f6; // Text
   --gray-100: #afafaf;
   --gray-200: #525252; //Divisor
   --gray-700: #15171b; // Bg Body
   --gray-900: #111113; // Bg Header
-  --blue-900: #1fa4e5; // CTA - Buttons
+  --blue-700: #4f91f9; // CTA - Buttons
   --yellow-500: #ffbe16; // Warning
 }
 
@@ -45,4 +45,9 @@ button {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+ul,
+li {
+  list-style-type: none;
 }
