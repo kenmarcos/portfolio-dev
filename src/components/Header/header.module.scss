@@ -1,7 +1,10 @@
 .container {
+  position: fixed;
+  width: 100vw;
   background-color: var(--gray-900);
   height: 5rem;
   padding: 0.8rem 1.5rem;
+  z-index: 1000;
 
   .content {
     height: 100%;

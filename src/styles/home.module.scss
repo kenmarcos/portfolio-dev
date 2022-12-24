@@ -1,5 +1,6 @@
 .container {
   padding: 1.5rem;
+  padding-top: 6rem;
   color: var(--white);
 
   h1,
@@ -110,6 +111,23 @@
   display: none;
 }
 
+.contact {
+  svg {
+    display: none;
+  }
+
+  p {
+    text-align: center;
+    font-size: 1.4rem;
+  }
+}
+
+.contactLink {
+  margin-top: 1.4rem;
+  display: flex;
+  justify-content: center;
+}
+
 @media (min-width: 576px) {
   .slider {
     display: none !important;
@@ -171,5 +189,25 @@
     position: unset;
     left: unset;
     transform: unset;
+  }
+
+  .contact {
+    max-width: 600px;
+    padding: 2rem 0;
+    display: flex;
+    gap: 2rem;
+
+    svg {
+      display: unset;
+    }
+
+    p {
+      font-size: 1.4rem;
+      max-width: 70%;
+    }
+  }
+
+  .contactLink {
+    all: unset;
   }
 }

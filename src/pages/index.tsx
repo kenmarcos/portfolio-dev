@@ -5,7 +5,7 @@ import Button from "components/Button";
 import styles from "styles/home.module.scss";
 import classNames from "classnames";
 
-import { Download } from "phosphor-react";
+import { ArrowFatLinesRight, Download } from "phosphor-react";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import { useState } from "react";
@@ -246,6 +246,24 @@ export default function Home() {
                 ))}
               </ul>
             </div>
+          </section>
+
+          <hr className={styles.divisor} />
+
+          <section className={styles.section}>
+            <div className={styles.contact}>
+              <p>
+                Quando precisar, entre em contato comigo. Estarei à disposição!
+              </p>
+              <ArrowFatLinesRight
+                className="animate__animated animate__headShake animate__infinite animate__slower	"
+                size={80}
+              />
+            </div>
+
+            <Link href="/contatos" className={styles.contactLink}>
+              <Button>Contatos</Button>
+            </Link>
           </section>
         </div>
       </main>
