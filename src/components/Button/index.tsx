@@ -4,7 +4,7 @@ import styles from "components/Button/button.module.scss";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-const Button = ({ children, ...rest }: ButtonProps) => {
+export const Button = ({ children, ...rest }: ButtonProps) => {
   const className =
     rest.className === "outline" ? styles.outline : styles.primary;
 
@@ -14,5 +14,3 @@ const Button = ({ children, ...rest }: ButtonProps) => {
     </button>
   );
 };
-
-export default Button;

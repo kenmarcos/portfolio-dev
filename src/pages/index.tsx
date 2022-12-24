@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 
-import Button from "components/Button";
+import { Button } from "components/Button";
 import styles from "styles/home.module.scss";
 import classNames from "classnames";
 

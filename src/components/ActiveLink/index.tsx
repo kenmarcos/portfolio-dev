@@ -7,7 +7,7 @@ interface ActiveLinkProps extends LinkProps {
   children: ReactNode;
 }
 
-const ActiveLink = ({
+export const ActiveLink = ({
   activeClassName,
   children,
   ...rest
@@ -22,5 +22,3 @@ const ActiveLink = ({
     </Link>
   );
 };
-
-export default ActiveLink;

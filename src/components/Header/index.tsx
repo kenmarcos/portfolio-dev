@@ -4,9 +4,9 @@ import Link from "next/link";
 import styles from "components/Header/header.module.scss";
 import logo from "../../../public/images/logo.png";
 import { List } from "phosphor-react";
-import ActiveLink from "components/ActiveLink";
+import { ActiveLink } from "components/ActiveLink";
 
-const Header = () => {
+export const Header = () => {
   return (
     <header className={styles.container}>
       <div className={styles.content}>
@@ -37,5 +37,3 @@ const Header = () => {
     </header>
   );
 };
-
-export default Header;
