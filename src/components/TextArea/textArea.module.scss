@@ -1,0 +1,19 @@
+.container {
+  border: 1px solid var(--blue-700);
+  border-radius: 5px;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 1rem;
+  margin: 1rem 0;
+
+  textarea {
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    color: var(--white);
+    resize: none;
+    flex-grow: 1;
+    height: 150px;
+  }
+}

@@ -50,9 +50,16 @@
   }
 
   div {
-    display: flex;
-    gap: 1rem;
     margin-top: 2rem;
+
+    a + a {
+      display: block;
+      margin-top: 1rem;
+    }
+
+    button {
+      width: 100%;
+    }
   }
 }
 
@@ -130,12 +137,28 @@
 }
 
 .contactLink {
+  display: block;
   margin-top: 1.4rem;
-  display: flex;
-  justify-content: center;
+
+  button {
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+  }
 }
 
 @media (min-width: 576px) {
+  .intro {
+    div {
+      display: flex;
+      gap: 1rem;
+
+      a + a {
+        margin-top: unset;
+      }
+    }
+  }
+
   .slider {
     display: none !important;
   }
@@ -152,6 +175,9 @@
     flex-wrap: wrap;
     gap: 1rem;
     margin: 1rem auto;
+  }
+
+  .contactLink {
   }
 }
 
@@ -212,5 +238,11 @@
 
   .contactLink {
     all: unset;
+
+    button {
+      width: unset;
+      margin: unset;
+      max-width: unset;
+    }
   }
 }

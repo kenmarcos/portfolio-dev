@@ -9,6 +9,7 @@ import { ArrowFatLinesRight, Download } from "phosphor-react";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import { useState } from "react";
+import { BackToTopButton } from "components/BackToTopButton";
 
 const skills = [
   {
@@ -137,26 +138,30 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>MKK - Home</title>
+        <title>MKK - Portfólio</title>
       </Head>
 
       <main className={styles.container}>
         <div className={styles.content}>
           <section className={styles.section}>
             <div className={styles.intro}>
-              <h1>Olá, eu sou o Marcos!</h1>
+              <h1>
+                Olá, eu sou o Marcos!{" "}
+                <img
+                  src="https://raw.githubusercontent.com/ABSphreak/ABSphreak/master/gifs/Hi.gif"
+                  width={38}
+                ></img>
+              </h1>
 
               <p>
                 Seja bem-vindo(a) ao meu portfólio. Aqui você vai conhecer um
                 pouco sobre mim, o que eu faço, ver meus projetos e muito mais.
-              </p>
-              <p>
                 Esse site foi feito com muito amor, carinho e dedicação. Espero
                 que goste!
               </p>
 
               <div>
-                <Link href="/projetos">
+                <Link href="/projects">
                   <Button>Projetos</Button>
                 </Link>
 
@@ -261,11 +266,13 @@ export default function Home() {
               />
             </div>
 
-            <Link href="/contatos" className={styles.contactLink}>
+            <Link href="/contacts" className={styles.contactLink}>
               <Button>Contatos</Button>
             </Link>
           </section>
         </div>
+
+        <BackToTopButton />
       </main>
     </>
   );

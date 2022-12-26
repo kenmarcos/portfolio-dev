@@ -23,10 +23,10 @@ export const Header = () => {
             <ActiveLink href="/" activeClassName={styles.active}>
               Home
             </ActiveLink>
-            <ActiveLink href="/projetos" activeClassName={styles.active}>
+            <ActiveLink href="/projects" activeClassName={styles.active}>
               Projetos
             </ActiveLink>
-            <ActiveLink href="/contatos" activeClassName={styles.active}>
+            <ActiveLink href="/contacts" activeClassName={styles.active}>
               Contatos
             </ActiveLink>
           </nav>

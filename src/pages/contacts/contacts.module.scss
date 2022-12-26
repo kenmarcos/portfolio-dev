@@ -1,0 +1,51 @@
+.container {
+  padding: 1.5rem;
+  padding-top: 6rem;
+  color: var(--white);
+}
+
+.content {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    font-size: 2.5rem;
+    color: var(--blue-700);
+    margin-bottom: 2rem;
+  }
+}
+
+.emailForm {
+  background-color: var(--gray-900);
+  padding: 2rem;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+.buttonBox {
+  display: flex;
+  justify-content: center;
+
+  button {
+    width: 100%;
+    max-width: 250px;
+    margin-top: 1rem;
+  }
+}
+
+.otherContacts {
+  display: flex;
+  gap: 1.4rem;
+
+  button {
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+}
