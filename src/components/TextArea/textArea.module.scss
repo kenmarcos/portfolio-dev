@@ -1,11 +1,12 @@
-.container {
-  border: 1px solid var(--blue-700);
+@mixin textAreaContainer {
+  border-width: 1px;
+  border-style: solid;
   border-radius: 5px;
   display: flex;
   align-items: flex-start;
   gap: 0.6rem;
   padding: 1rem;
-  margin: 1rem 0;
+  margin-top: 10px;
 
   textarea {
     background-color: transparent;
@@ -16,4 +17,30 @@
     flex-grow: 1;
     height: 150px;
   }
+}
+
+.defaultContainer {
+  @include textAreaContainer();
+  border-color: var(--blue-700);
+
+  svg {
+    color: var(--blue-700);
+  }
+}
+
+.errorContainer {
+  @include textAreaContainer();
+  border-color: var(--yellow-500);
+
+  svg {
+    color: var(--yellow-500);
+  }
+}
+
+.noErrorMessage {
+  display: inline-block;
+}
+
+.withErrorMessage {
+  color: var(--yellow-500);
 }

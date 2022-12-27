@@ -1,11 +1,12 @@
-.container {
-  border: 1px solid var(--blue-700);
+@mixin inputContainer {
+  border-width: 1px;
+  border-style: solid;
   border-radius: 5px;
   display: flex;
   align-items: center;
   gap: 0.6rem;
   padding: 1rem;
-  margin: 1rem 0;
+  margin-top: 10px;
 
   input {
     background-color: transparent;
@@ -14,4 +15,30 @@
     color: var(--white);
     width: 100%;
   }
+}
+
+.defaultContainer {
+  @include inputContainer();
+  border-color: var(--blue-700);
+
+  svg {
+    color: var(--blue-700);
+  }
+}
+
+.errorContainer {
+  @include inputContainer();
+  border-color: var(--yellow-500);
+
+  svg {
+    color: var(--yellow-500);
+  }
+}
+
+.noErrorMessage {
+  display: inline-block;
+}
+
+.withErrorMessage {
+  color: var(--yellow-500);
 }

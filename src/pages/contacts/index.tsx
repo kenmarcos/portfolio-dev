@@ -14,11 +14,58 @@ import {
   User,
   WhatsappLogo,
 } from "phosphor-react";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import emailjs from "@emailjs/browser";
+import toast from "react-hot-toast";
+
+interface ContactForm {
+  contact_name: string;
+  contact_email: string;
+  subject: string;
+  message: string;
+}
 
 const wppNumber = 5511942312965;
 const message = "Olá!%0aVim aqui através do seu portfólio...";
 
 const Contacts = () => {
+  const schema = yup.object().shape({
+    contact_name: yup.string().trim().required("*Campo obrigatório"),
+    contact_email: yup
+      .string()
+      .email("*E-mail inválido")
+      .trim()
+      .required("*Campo obrigatório"),
+    subject: yup.string().trim().required("*Campo obrigatório"),
+    message: yup.string().trim().required("*Campo obrigatório"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ContactForm>({ resolver: yupResolver(schema) });
+
+  const handleSubmitFunction = (data: ContactForm, event: any) => {
+    emailjs
+      .sendForm(
+        "service_ze7q70g",
+        "template_yoxa9vi",
+        event.target,
+        "84hIvebUN5X8bzsrr"
+      )
+      .then(
+        () => {
+          toast.success("Mensagem enviada com sucesso!");
+        },
+        (error) => {
+          toast.error("Ocorreu um erro. Tente novamente, mais tarde.");
+        }
+      );
+  };
+
   return (
     <>
       <Head>
@@ -29,12 +76,17 @@ const Contacts = () => {
         <div className={styles.content}>
           <h1>Enviar E-mail</h1>
 
-          <form action="" className={styles.emailForm}>
+          <form
+            className={styles.emailForm}
+            onSubmit={handleSubmit(handleSubmitFunction)}
+          >
             <div>
               <Input
                 icon={<User size={25} weight="light" />}
                 type="text"
                 placeholder="Seu Nome"
+                error={errors.contact_name?.message}
+                {...register("contact_name")}
               />
             </div>
 
@@ -43,6 +95,8 @@ const Contacts = () => {
                 icon={<Envelope size={25} weight="light" />}
                 type="text"
                 placeholder="Seu E-mail"
+                error={errors.contact_email?.message}
+                {...register("contact_email")}
               />
             </div>
 
@@ -51,6 +105,8 @@ const Contacts = () => {
                 icon={<PencilSimple size={25} weight="light" />}
                 type="text"
                 placeholder="Assunto"
+                error={errors.subject?.message}
+                {...register("subject")}
               />
             </div>
 
@@ -58,11 +114,13 @@ const Contacts = () => {
               <TextArea
                 icon={<NotePencil size={25} weight="light" />}
                 placeholder="Mensagem"
+                error={errors.message?.message}
+                {...register("message")}
               />
             </div>
 
             <div className={styles.buttonBox}>
-              <Button>Enviar</Button>
+              <Button type="submit">Enviar</Button>
             </div>
           </form>
 

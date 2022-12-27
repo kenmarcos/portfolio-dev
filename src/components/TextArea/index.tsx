@@ -1,16 +1,35 @@
+import classNames from "classnames";
 import styles from "components/TextArea/textArea.module.scss";
-import { ReactElement, TextareaHTMLAttributes } from "react";
+import { forwardRef, ReactElement, TextareaHTMLAttributes } from "react";
 
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   icon?: ReactElement;
   error?: string;
 }
 
-export const TextArea = ({ icon, error, ...rest }: TextAreaProps) => {
-  return (
-    <div className={styles.container}>
-      {!!icon && icon}
-      <textarea {...rest} />
-    </div>
-  );
-};
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
+  ({ icon, error, ...rest }: TextAreaProps, ref) => {
+    const containerClass = classNames({
+      defaultContainer: !error,
+      errorContainer: error,
+    });
+
+    const errorMessageClass = classNames({
+      noErrorMessage: !error,
+      withErrorMessage: error,
+    });
+
+    return (
+      <>
+        <div className={styles[containerClass]}>
+          {!!icon && icon}
+          <textarea {...rest} ref={ref} />
+        </div>
+
+        <small className={styles[errorMessageClass]}>{error}</small>
+      </>
+    );
+  }
+);
+
+TextArea.displayName = "Input";
