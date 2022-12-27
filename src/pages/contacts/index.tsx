@@ -12,7 +12,11 @@ import {
   NotePencil,
   PencilSimple,
   User,
+  WhatsappLogo,
 } from "phosphor-react";
+
+const wppNumber = 5511942312965;
+const message = "Olá!%0aVim aqui através do seu portfólio...";
 
 const Contacts = () => {
   return (
@@ -63,6 +67,16 @@ const Contacts = () => {
           </form>
 
           <div className={styles.otherContacts}>
+            <Link
+              href={`https://wa.me/${wppNumber}?text=${message}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="outline">
+                <WhatsappLogo size={32} />
+              </Button>
+            </Link>
+
             <Link
               href="https://www.linkedin.com/in/marcos-kuribayashi/"
               target="_blank"

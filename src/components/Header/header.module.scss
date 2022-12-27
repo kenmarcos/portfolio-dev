@@ -5,58 +5,63 @@
   height: 5rem;
   padding: 0.8rem 1.5rem;
   z-index: 1000;
+}
 
-  .content {
+.content {
+  height: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
     height: 100%;
-    max-width: 1120px;
-    margin: 0 auto;
+
+    img {
+      cursor: pointer;
+      height: 100%;
+      max-width: 200px;
+    }
+  }
+}
+
+.navBar {
+  display: none;
+  gap: 2.5rem;
+  align-items: center;
+
+  nav {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    gap: 1.5rem;
+    color: var(--gray-100);
 
     a {
-      height: 100%;
+      transition: color 0.2s;
 
-      img {
-        cursor: pointer;
-        height: 100%;
-        max-width: 200px;
+      &:hover {
+        color: var(--white);
+      }
+
+      &.active {
+        color: var(--blue-700);
+        font-weight: bold;
       }
     }
+  }
+}
 
-    .navBar {
-      display: none;
-      gap: 2.5rem;
-      align-items: center;
+.burgerMenu {
+  background-color: transparent;
+  border: none;
+}
 
-      nav {
-        display: flex;
-        gap: 1.5rem;
-        color: var(--gray-100);
+@media (min-width: 576px) {
+  .burgerMenu {
+    display: none;
+  }
 
-        a {
-          transition: color 0.2s;
-
-          &:hover {
-            color: var(--white);
-          }
-
-          &.active {
-            color: var(--blue-700);
-            font-weight: bold;
-          }
-        }
-      }
-    }
-
-    @media (min-width: 992px) {
-      .burgerMenu {
-        display: none;
-      }
-
-      .navBar {
-        display: flex;
-      }
-    }
+  .navBar {
+    display: flex;
   }
 }

@@ -267,7 +267,7 @@ export default function Home() {
             </div>
 
             <Link href="/contacts" className={styles.contactLink}>
-              <Button>Contatos</Button>
+              <Button>Entrar em Contato</Button>
             </Link>
           </section>
         </div>
