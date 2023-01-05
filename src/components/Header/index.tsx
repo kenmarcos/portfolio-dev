@@ -3,12 +3,10 @@ import Link from "next/link";
 
 import styles from "components/Header/header.module.scss";
 import logo from "../../../public/images/logo.png";
-import { List } from "phosphor-react";
 import { ActiveLink } from "components/ActiveLink";
 import { OffCanvasMenu } from "components/OffCanvasMenu";
 import { useRef, useState } from "react";
 import Hamburger from "hamburger-react";
-import { CSSTransition } from "react-transition-group";
 
 export const Header = () => {
   const nodeRef = useRef(null);
