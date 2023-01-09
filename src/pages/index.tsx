@@ -10,6 +10,7 @@ import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import { useState } from "react";
 import { BackToTopButton } from "components/BackToTopButton";
+import { AnimationOnScroll } from "react-animation-on-scroll";
 
 const skills = [
   {
@@ -192,13 +193,18 @@ export default function Home() {
           <hr className={styles.divisor} />
 
           <section className={styles.section}>
-            <img
-              className={styles.aboutImg}
-              src="/images/profile.png"
-              alt="banner"
-            />
+            <AnimationOnScroll animateIn="animate__fadeIn">
+              <img
+                className={styles.aboutImg}
+                src="/images/profile.png"
+                alt="banner"
+              />
+            </AnimationOnScroll>
 
-            <div className={styles.about}>
+            <AnimationOnScroll
+              animateIn="animate__fadeInUp"
+              className={styles.about}
+            >
               <h2>Sobre mim</h2>
 
               <h3>Marcos Kenji Kuribayashi</h3>
@@ -213,50 +219,57 @@ export default function Home() {
                 tempora doloribus, mollitia enim, at fuga vel quibusdam
                 exercitationem?
               </p>
-            </div>
+            </AnimationOnScroll>
           </section>
 
           <hr className={styles.divisor} />
 
           <section className={styles.section}>
             <div className={styles.skills}>
-              <h2>Habilidades & Conhecimentos</h2>
+              <AnimationOnScroll animateIn="animate__fadeInLeft">
+                <h2>Habilidades & Conhecimentos</h2>
+              </AnimationOnScroll>
 
               <h3 className={styles[skillClass]}>
                 {skillInfo.skill ? skillInfo.skill?.name : "null"}
               </h3>
 
-              <div ref={sliderRef} className={`keen-slider ${styles.slider}`}>
-                {skills.map((skill) => (
-                  <div
-                    key={skill.id}
-                    className={`keen-slider__slide ${styles.skillCard}`}
-                    onMouseEnter={() => showSkill(skill)}
-                  >
-                    <img src={skill.src} />
-                  </div>
-                ))}
-              </div>
+              <AnimationOnScroll animateIn="animate__fadeInRight">
+                <div ref={sliderRef} className={`keen-slider ${styles.slider}`}>
+                  {skills.map((skill) => (
+                    <div
+                      key={skill.id}
+                      className={`keen-slider__slide ${styles.skillCard}`}
+                      onMouseEnter={() => showSkill(skill)}
+                    >
+                      <img src={skill.src} />
+                    </div>
+                  ))}
+                </div>
 
-              <ul className={styles.techs}>
-                {skills.map((skill) => (
-                  <li
-                    key={skill.id}
-                    onMouseEnter={() => showSkill(skill)}
-                    onMouseLeave={() => hideSkill(skill)}
-                    className={styles.skillCard}
-                  >
-                    <img src={skill.src} width={80} />
-                  </li>
-                ))}
-              </ul>
+                <ul className={styles.techs}>
+                  {skills.map((skill) => (
+                    <li
+                      key={skill.id}
+                      onMouseEnter={() => showSkill(skill)}
+                      onMouseLeave={() => hideSkill(skill)}
+                      className={styles.skillCard}
+                    >
+                      <img src={skill.src} width={80} />
+                    </li>
+                  ))}
+                </ul>
+              </AnimationOnScroll>
             </div>
           </section>
 
           <hr className={styles.divisor} />
 
           <section className={styles.section}>
-            <div className={styles.contact}>
+            <AnimationOnScroll
+              animateIn="animate__flipInX"
+              className={styles.contact}
+            >
               <p>
                 Quando precisar, entre em contato comigo. Estarei à disposição!
               </p>
@@ -264,11 +277,13 @@ export default function Home() {
                 className="animate__animated animate__headShake animate__infinite animate__slower	"
                 size={80}
               />
-            </div>
+            </AnimationOnScroll>
 
-            <Link href="/contacts" className={styles.contactLink}>
-              <Button>Entrar em Contato</Button>
-            </Link>
+            <AnimationOnScroll animateIn="animate__flipInX">
+              <Link href="/contacts" className={styles.contactLink}>
+                <Button>Entrar em Contato</Button>
+              </Link>
+            </AnimationOnScroll>
           </section>
         </div>
 
