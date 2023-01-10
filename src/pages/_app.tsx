@@ -1,11 +1,11 @@
 import type { AppProps } from "next/app";
 
 import { Toaster } from "react-hot-toast";
+import "animate.css";
 
 import { Header } from "components/Header";
-import "styles/global.scss";
-import "animate.css";
 import { Footer } from "components/Footer";
+import "styles/global.scss";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

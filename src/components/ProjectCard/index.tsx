@@ -1,8 +1,9 @@
-import { Button } from "components/Button";
-import styles from "components/ProjectCard/projectCard.module.scss";
-import Image from "next/image";
 import { useState } from "react";
+import Image from "next/image";
+
+import styles from "components/ProjectCard/projectCard.module.scss";
 import { ProjectModal } from "components/ProjectModal";
+import { Button } from "components/Button";
 import { Project } from "types";
 
 interface ProjectCardProps {

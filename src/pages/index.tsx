@@ -1,26 +1,26 @@
 /* eslint-disable @next/next/no-img-element */
+import { useState } from "react";
+import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
 
-import { Button } from "components/Button";
-import styles from "styles/home.module.scss";
+import { AnimationOnScroll } from "react-animation-on-scroll";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
+import { gql } from "@apollo/client";
 import classNames from "classnames";
-
 import {
   ArrowFatLinesRight,
   Download,
   PresentationChart,
 } from "phosphor-react";
-import "keen-slider/keen-slider.min.css";
-import { useKeenSlider } from "keen-slider/react";
-import { useState } from "react";
+
 import { BackToTopButton } from "components/BackToTopButton";
-import { AnimationOnScroll } from "react-animation-on-scroll";
-import { client } from "lib/apollo";
-import { gql } from "@apollo/client";
-import Image from "next/image";
 import { HomeData, Skill, SkillInfo } from "types";
 // import { differenceInYears } from "date-fns";
+import styles from "styles/home.module.scss";
+import { Button } from "components/Button";
+import { client } from "lib/apollo";
 
 export interface HomeProps {
   homeData: HomeData;
@@ -28,12 +28,12 @@ export interface HomeProps {
 }
 
 export default function Home(props: HomeProps) {
+  // const [experience, setExperience] = useState(0);
+
   const [skillInfo, setSkillInfo] = useState<SkillInfo>({
     isForShow: false,
     skill: null,
   });
-
-  // const [experience, setExperience] = useState(0);
 
   const [sliderRef, instanceRef] = useKeenSlider({
     initial: 1,

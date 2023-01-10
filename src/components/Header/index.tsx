@@ -1,17 +1,17 @@
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+import Hamburger from "hamburger-react";
+
 import styles from "components/Header/header.module.scss";
+import { OffCanvasMenu } from "components/OffCanvasMenu";
 import logo from "../../../public/images/logo.png";
 import { ActiveLink } from "components/ActiveLink";
-import { OffCanvasMenu } from "components/OffCanvasMenu";
-import { useRef, useState } from "react";
-import Hamburger from "hamburger-react";
 
 export const Header = () => {
   const nodeRef = useRef(null);
   const [show, setShow] = useState(false);
-  const [imageClasses, setImageClasses] = useState("d-none");
 
   return (
     <>
@@ -38,25 +38,10 @@ export const Header = () => {
               </ActiveLink>
             </nav>
 
-            <button>Switch</button>
+            {/* <button>Switch</button> */}
           </div>
         </div>
       </header>
-
-      {/* <CSSTransition
-        in={show}
-        nodeRef={nodeRef}
-        timeout={500}
-        classNames={{
-          enterActive: "animate__bounceIn",
-          exitActive: "animate__bounceOut",
-        }}
-        className={`animate__animated my-4 ${imageClasses}`}
-        onEnter={() => setShow(true)}
-        onExited={() => setShow(false)}
-      >
-        <OffCanvasMenu setShow={setShow} />
-      </CSSTransition> */}
 
       {!!show && <OffCanvasMenu setShow={setShow} />}
     </>

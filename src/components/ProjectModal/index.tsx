@@ -1,10 +1,12 @@
-import { Dialog } from "@headlessui/react";
-import { Button } from "components/Button";
-import styles from "components/ProjectModal/projectModal.module.scss";
+import { Dispatch, SetStateAction } from "react";
 import Image from "next/image";
 import Link from "next/link";
+
+import { Dialog } from "@headlessui/react";
 import { X } from "phosphor-react";
-import { Dispatch, SetStateAction } from "react";
+
+import styles from "components/ProjectModal/projectModal.module.scss";
+import { Button } from "components/Button";
 import { Project } from "types";
 
 interface ProjectModalProps {

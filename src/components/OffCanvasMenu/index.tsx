@@ -1,6 +1,7 @@
+import { Dispatch, SetStateAction } from "react";
+
 import { ActiveLink } from "components/ActiveLink";
 import styles from "components/OffCanvasMenu/offCanvasMenu.module.scss";
-import { Dispatch, SetStateAction } from "react";
 
 interface OffCanvasMenuProps {
   setShow: Dispatch<SetStateAction<boolean>>;
@@ -52,9 +53,9 @@ export const OffCanvasMenu = (props: OffCanvasMenuProps) => {
             </div>
           </nav>
 
-          <div>
+          {/* <div>
             <button>Switch</button>
-          </div>
+          </div> */}
         </div>
       </aside>
     </div>

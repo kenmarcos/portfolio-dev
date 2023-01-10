@@ -1,5 +1,6 @@
-import styles from "components/Footer/footer.module.scss";
 import { Envelope } from "phosphor-react";
+
+import styles from "components/Footer/footer.module.scss";
 
 export const Footer = () => {
   const date = new Date();

@@ -1,6 +1,8 @@
-import styles from "components/Input/input.module.scss";
 import { forwardRef, InputHTMLAttributes, ReactElement } from "react";
+
 import classNames from "classnames";
+
+import styles from "components/Input/input.module.scss";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   icon?: ReactElement;

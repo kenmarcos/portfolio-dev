@@ -1,6 +1,8 @@
-import classNames from "classnames";
-import styles from "components/TextArea/textArea.module.scss";
 import { forwardRef, ReactElement, TextareaHTMLAttributes } from "react";
+
+import classNames from "classnames";
+
+import styles from "components/TextArea/textArea.module.scss";
 
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   icon?: ReactElement;

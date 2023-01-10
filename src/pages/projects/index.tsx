@@ -1,10 +1,11 @@
-import { gql } from "@apollo/client";
-import { ProjectCard } from "components/ProjectCard";
-import { client } from "lib/apollo";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 
+import { gql } from "@apollo/client";
+
 import styles from "pages/projects/projects.module.scss";
+import { ProjectCard } from "components/ProjectCard";
+import { client } from "lib/apollo";
 import { Project } from "types";
 
 interface ProjectsProps {

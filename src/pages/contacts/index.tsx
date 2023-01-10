@@ -1,9 +1,10 @@
-import { Button } from "components/Button";
-import { Input } from "components/Input";
-import { TextArea } from "components/TextArea";
 import Head from "next/head";
 import Link from "next/link";
-import styles from "pages/contacts/contacts.module.scss";
+
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import emailjs from "@emailjs/browser";
+import toast from "react-hot-toast";
 import {
   Envelope,
   GithubLogo,
@@ -14,12 +15,13 @@ import {
   User,
   WhatsappLogo,
 } from "phosphor-react";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import emailjs from "@emailjs/browser";
-import toast from "react-hot-toast";
+
+import styles from "pages/contacts/contacts.module.scss";
+import { TextArea } from "components/TextArea";
+import { Button } from "components/Button";
+import { Input } from "components/Input";
 import { ContactForm } from "types";
+import * as yup from "yup";
 
 const wppNumber = 5511942312965;
 const message = "Olá!%0aVim aqui através do seu portfólio...";

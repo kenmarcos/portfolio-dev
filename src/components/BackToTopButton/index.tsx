@@ -1,5 +1,6 @@
-import styles from "components/BackToTopButton/backToTopButton.module.scss";
 import { ArrowUp } from "phosphor-react";
+
+import styles from "components/BackToTopButton/backToTopButton.module.scss";
 
 export const BackToTopButton = () => {
   const scrollToTop = () => {
