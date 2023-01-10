@@ -19,13 +19,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
-
-interface ContactForm {
-  contact_name: string;
-  contact_email: string;
-  subject: string;
-  message: string;
-}
+import { ContactForm } from "types";
 
 const wppNumber = 5511942312965;
 const message = "Olá!%0aVim aqui através do seu portfólio...";

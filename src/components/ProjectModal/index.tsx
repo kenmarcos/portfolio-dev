@@ -5,19 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { X } from "phosphor-react";
 import { Dispatch, SetStateAction } from "react";
+import { Project } from "types";
 
-interface Project {
-  id: string;
-  name: string;
-  thumbnail: {
-    url: string;
-  };
-  description: string;
-  mainDescription: string;
-  tools: string[];
-  projectUrl: string;
-  repoUrl: string;
-}
 interface ProjectModalProps {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;

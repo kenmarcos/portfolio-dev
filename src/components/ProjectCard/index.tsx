@@ -3,19 +3,8 @@ import styles from "components/ProjectCard/projectCard.module.scss";
 import Image from "next/image";
 import { useState } from "react";
 import { ProjectModal } from "components/ProjectModal";
+import { Project } from "types";
 
-interface Project {
-  id: string;
-  name: string;
-  thumbnail: {
-    url: string;
-  };
-  description: string;
-  mainDescription: string;
-  tools: string[];
-  projectUrl: string;
-  repoUrl: string;
-}
 interface ProjectCardProps {
   project: Project;
 }

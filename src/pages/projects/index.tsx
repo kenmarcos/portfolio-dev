@@ -5,19 +5,7 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 
 import styles from "pages/projects/projects.module.scss";
-
-interface Project {
-  id: string;
-  name: string;
-  thumbnail: {
-    url: string;
-  };
-  description: string;
-  mainDescription: string;
-  tools: string[];
-  projectUrl: string;
-  repoUrl: string;
-}
+import { Project } from "types";
 
 interface ProjectsProps {
   projects: Project[];

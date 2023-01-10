@@ -19,33 +19,11 @@ import { AnimationOnScroll } from "react-animation-on-scroll";
 import { client } from "lib/apollo";
 import { gql } from "@apollo/client";
 import Image from "next/image";
+import { HomeData, Skill, SkillInfo } from "types";
 // import { differenceInYears } from "date-fns";
 
-interface Skill {
-  id: number;
-  name: string;
-  icon: string;
-  startDate: Date;
-}
-interface SkillInfo {
-  isForShow: boolean;
-  skill: Skill | null;
-}
-
-interface HomeProps {
-  dataHome: {
-    introTitle: string;
-    introText: string;
-    resumeUrl: string;
-    introImg: {
-      url: string;
-    };
-    aboutName: string;
-    aboutDescription: string;
-    aboutImg: {
-      url: string;
-    };
-  };
+export interface HomeProps {
+  homeData: HomeData;
   skills: Skill[];
 }
 
@@ -95,7 +73,7 @@ export default function Home(props: HomeProps) {
           <section className={styles.section}>
             <div className={styles.intro}>
               <h1>
-                {props.dataHome.introTitle}{" "}
+                {props.homeData.introTitle}{" "}
                 <Image
                   src={
                     "https://raw.githubusercontent.com/ABSphreak/ABSphreak/master/gifs/Hi.gif"
@@ -106,7 +84,7 @@ export default function Home(props: HomeProps) {
                 />
               </h1>
 
-              <p>{props.dataHome.introText}</p>
+              <p>{props.homeData.introText}</p>
 
               <div>
                 <Link href="/projects">
@@ -117,7 +95,7 @@ export default function Home(props: HomeProps) {
                 </Link>
 
                 <Link
-                  href={props.dataHome.resumeUrl}
+                  href={props.homeData.resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -130,7 +108,7 @@ export default function Home(props: HomeProps) {
             </div>
 
             <figure className={styles.introFigure}>
-              <img src={props.dataHome.introImg.url} alt="Imagem Principal" />
+              <img src={props.homeData.introImg.url} alt="Imagem Principal" />
               <Link href="https://storyset.com/people">
                 People illustrations by Storyset
               </Link>
@@ -143,7 +121,7 @@ export default function Home(props: HomeProps) {
             <AnimationOnScroll animateIn="animate__fadeIn">
               <img
                 className={styles.aboutImg}
-                src={props.dataHome.aboutImg.url}
+                src={props.homeData.aboutImg.url}
                 alt="Foto de Perfil"
               />
             </AnimationOnScroll>
@@ -154,9 +132,9 @@ export default function Home(props: HomeProps) {
             >
               <h2>Sobre mim</h2>
 
-              <h3>{props.dataHome.aboutName}</h3>
+              <h3>{props.homeData.aboutName}</h3>
 
-              <p>{props.dataHome.aboutDescription}</p>
+              <p>{props.homeData.aboutDescription}</p>
             </AnimationOnScroll>
           </section>
 
