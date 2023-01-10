@@ -249,7 +249,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      dataHome: homeData.home,
+      homeData: homeData.home,
       skills: skillData.skills,
     },
   };
