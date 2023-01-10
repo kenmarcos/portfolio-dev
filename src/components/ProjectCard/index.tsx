@@ -4,16 +4,20 @@ import Image from "next/image";
 import { useState } from "react";
 import { ProjectModal } from "components/ProjectModal";
 
-interface ProjectCardProps {
-  project: {
-    name: string;
-    image: string;
-    description: string;
-    mainDescription: string;
-    tools: string[];
-    projectUrl: string;
-    repoUrl: string;
+interface Project {
+  id: string;
+  name: string;
+  thumbnail: {
+    url: string;
   };
+  description: string;
+  mainDescription: string;
+  tools: string[];
+  projectUrl: string;
+  repoUrl: string;
+}
+interface ProjectCardProps {
+  project: Project;
 }
 
 export const ProjectCard = (props: ProjectCardProps) => {
@@ -26,8 +30,8 @@ export const ProjectCard = (props: ProjectCardProps) => {
 
         <Image
           priority
-          src={props.project.image}
-          alt="project"
+          src={props.project.thumbnail.url}
+          alt={`Imagem ${props.project.name}`}
           width={300}
           height={200}
         />

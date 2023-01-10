@@ -6,18 +6,22 @@ import Link from "next/link";
 import { X } from "phosphor-react";
 import { Dispatch, SetStateAction } from "react";
 
+interface Project {
+  id: string;
+  name: string;
+  thumbnail: {
+    url: string;
+  };
+  description: string;
+  mainDescription: string;
+  tools: string[];
+  projectUrl: string;
+  repoUrl: string;
+}
 interface ProjectModalProps {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-  project: {
-    name: string;
-    image: string;
-    description: string;
-    mainDescription: string;
-    tools: string[];
-    projectUrl: string;
-    repoUrl: string;
-  };
+  project: Project;
 }
 
 export const ProjectModal = (props: ProjectModalProps) => {
@@ -40,10 +44,11 @@ export const ProjectModal = (props: ProjectModalProps) => {
           <div className={styles.bodyContainer}>
             <div className={styles.imageContainer}>
               <Image
-                src={props.project.image}
-                alt="imagem do projeto"
+                src={props.project.thumbnail.url}
+                alt={`Imagem ${props.project.name}`}
                 width={600}
                 height={500}
+                priority
               />
             </div>
 

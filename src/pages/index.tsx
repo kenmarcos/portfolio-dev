@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import Link from "next/link";
 
@@ -5,126 +6,73 @@ import { Button } from "components/Button";
 import styles from "styles/home.module.scss";
 import classNames from "classnames";
 
-import { ArrowFatLinesRight, Download } from "phosphor-react";
+import {
+  ArrowFatLinesRight,
+  Download,
+  PresentationChart,
+} from "phosphor-react";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import { useState } from "react";
 import { BackToTopButton } from "components/BackToTopButton";
 import { AnimationOnScroll } from "react-animation-on-scroll";
-
-const skills = [
-  {
-    id: 1,
-    name: "React",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-  },
-  {
-    id: 2,
-    name: "TypeScript",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-  },
-  {
-    id: 3,
-    name: "JavaScript",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-  },
-  {
-    id: 4,
-    name: "CSS",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-  },
-  {
-    id: 5,
-    name: "HTML",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-  },
-  {
-    id: 6,
-    name: "Git",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-  },
-  {
-    id: 7,
-    name: "Bootstrap",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
-  },
-  {
-    id: 8,
-    name: "Next.js",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
-  },
-  {
-    id: 9,
-    name: "Tailwind",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
-  },
-  {
-    id: 10,
-    name: "Sass",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg",
-  },
-  {
-    id: 11,
-    name: "Redux",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
-  },
-  {
-    id: 12,
-    name: "Node.js",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-  },
-  {
-    id: 13,
-    name: "Express",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-  },
-  {
-    id: 14,
-    name: "Python",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-  },
-  {
-    id: 15,
-    name: "Django",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg",
-  },
-];
+import { client } from "lib/apollo";
+import { gql } from "@apollo/client";
+import Image from "next/image";
+// import { differenceInYears } from "date-fns";
 
 interface Skill {
   id: number;
   name: string;
-  src: string;
+  icon: string;
+  startDate: Date;
 }
 interface SkillInfo {
   isForShow: boolean;
   skill: Skill | null;
 }
 
-export default function Home() {
+interface HomeProps {
+  dataHome: {
+    introTitle: string;
+    introText: string;
+    resumeUrl: string;
+    introImg: {
+      url: string;
+    };
+    aboutName: string;
+    aboutDescription: string;
+    aboutImg: {
+      url: string;
+    };
+  };
+  skills: Skill[];
+}
+
+export default function Home(props: HomeProps) {
   const [skillInfo, setSkillInfo] = useState<SkillInfo>({
     isForShow: false,
     skill: null,
   });
 
-  const [sliderRef, instanceRef] = useKeenSlider(
-    {
-      initial: 1,
-      mode: "free",
-      slides: { origin: "center", perView: 2.5, spacing: 12 },
-    },
-    [
-      // add plugins here
-    ]
-  );
+  // const [experience, setExperience] = useState(0);
 
-  const showSkill = (skill: any) => {
+  const [sliderRef, instanceRef] = useKeenSlider({
+    initial: 1,
+    mode: "free",
+    slides: { origin: "center", perView: 2.5, spacing: 12 },
+  });
+
+  const showSkill = (skill: Skill) => {
     setSkillInfo({
       isForShow: true,
       skill,
     });
+
+    // setExperience(differenceInYears(new Date(), new Date(skill.startDate)));
   };
 
-  const hideSkill = (skill: any) => {
+  const hideSkill = (skill: Skill) => {
     setSkillInfo({
       isForShow: false,
       skill,
@@ -147,43 +95,42 @@ export default function Home() {
           <section className={styles.section}>
             <div className={styles.intro}>
               <h1>
-                Olá, eu sou o Marcos!{" "}
-                <img
-                  src="https://raw.githubusercontent.com/ABSphreak/ABSphreak/master/gifs/Hi.gif"
+                {props.dataHome.introTitle}{" "}
+                <Image
+                  src={
+                    "https://raw.githubusercontent.com/ABSphreak/ABSphreak/master/gifs/Hi.gif"
+                  }
                   width={38}
-                ></img>
+                  height={38}
+                  alt="Emoji de Saudação"
+                />
               </h1>
 
-              <p>
-                Seja bem-vindo(a) ao meu portfólio. Aqui você vai conhecer um
-                pouco sobre mim, o que eu faço, ver meus projetos e muito mais.
-                Esse site foi feito com muito amor, carinho e dedicação. Espero
-                que goste!
-              </p>
+              <p>{props.dataHome.introText}</p>
 
               <div>
                 <Link href="/projects">
-                  <Button>Projetos</Button>
+                  <Button>
+                    <PresentationChart size={25} />
+                    Projetos
+                  </Button>
                 </Link>
 
                 <Link
-                  href="https://drive.google.com/file/d/1dliLFFyLMfrCiAve5SycyjSCGqKCnmfF/view?usp=sharing"
+                  href={props.dataHome.resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <Button className="outline">
-                    Currículo
                     <Download size={25} />
+                    Currículo
                   </Button>
                 </Link>
               </div>
             </div>
 
             <figure className={styles.introFigure}>
-              <img
-                src="/images/web-dev.svg"
-                alt="https://storyset.com/people"
-              />
+              <img src={props.dataHome.introImg.url} alt="Imagem Principal" />
               <Link href="https://storyset.com/people">
                 People illustrations by Storyset
               </Link>
@@ -196,8 +143,8 @@ export default function Home() {
             <AnimationOnScroll animateIn="animate__fadeIn">
               <img
                 className={styles.aboutImg}
-                src="/images/profile.png"
-                alt="banner"
+                src={props.dataHome.aboutImg.url}
+                alt="Foto de Perfil"
               />
             </AnimationOnScroll>
 
@@ -207,18 +154,9 @@ export default function Home() {
             >
               <h2>Sobre mim</h2>
 
-              <h3>Marcos Kenji Kuribayashi</h3>
+              <h3>{props.dataHome.aboutName}</h3>
 
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut
-                magnam iste minus doloribus consequuntur ipsum consectetur odio
-                earum iusto repellat sed vel et, voluptatum ipsa nemo, harum
-                quisquam? Consequuntur, error! Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Exercitationem, debitis. Explicabo
-                totam omnis fugiat quis voluptatum minima quaerat sequi cum quo
-                tempora doloribus, mollitia enim, at fuga vel quibusdam
-                exercitationem?
-              </p>
+              <p>{props.dataHome.aboutDescription}</p>
             </AnimationOnScroll>
           </section>
 
@@ -230,32 +168,36 @@ export default function Home() {
                 <h2>Habilidades & Conhecimentos</h2>
               </AnimationOnScroll>
 
-              <h3 className={styles[skillClass]}>
-                {skillInfo.skill ? skillInfo.skill?.name : "null"}
-              </h3>
+              <div className={styles[skillClass]}>
+                <h3>{skillInfo.skill ? skillInfo.skill?.name : "null"}</h3>
+                {/* <p>
+                  Experiência: {experience} - {experience + 1} ano
+                  {experience < 1 ? "" : "s"}
+                </p> */}
+              </div>
 
               <AnimationOnScroll animateIn="animate__fadeInRight">
                 <div ref={sliderRef} className={`keen-slider ${styles.slider}`}>
-                  {skills.map((skill) => (
+                  {props.skills.map((skill) => (
                     <div
                       key={skill.id}
                       className={`keen-slider__slide ${styles.skillCard}`}
                       onMouseEnter={() => showSkill(skill)}
                     >
-                      <img src={skill.src} />
+                      <img src={skill.icon} alt="" />
                     </div>
                   ))}
                 </div>
 
                 <ul className={styles.techs}>
-                  {skills.map((skill) => (
+                  {props.skills.map((skill) => (
                     <li
                       key={skill.id}
                       onMouseEnter={() => showSkill(skill)}
                       onMouseLeave={() => hideSkill(skill)}
                       className={styles.skillCard}
                     >
-                      <img src={skill.src} width={80} />
+                      <img src={skill.icon} width={80} alt="" />
                     </li>
                   ))}
                 </ul>
@@ -292,3 +234,45 @@ export default function Home() {
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  const { data: homeData } = await client.query({
+    query: gql`
+      query MyQuery {
+        home(where: { id: "clcp7p5mc584n0altrc9wcsmf" }) {
+          introTitle
+          introText
+          resumeUrl
+          introImg {
+            url
+          }
+          aboutName
+          aboutDescription
+          aboutImg {
+            url
+          }
+        }
+      }
+    `,
+  });
+
+  const { data: skillData } = await client.query({
+    query: gql`
+      query MyQuery {
+        skills(first: 30) {
+          id
+          name
+          icon
+          startDate
+        }
+      }
+    `,
+  });
+
+  return {
+    props: {
+      dataHome: homeData.home,
+      skills: skillData.skills,
+    },
+  };
+};
