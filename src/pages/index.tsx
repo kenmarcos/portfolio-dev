@@ -252,5 +252,6 @@ export const getStaticProps = async () => {
       homeData: homeData.home,
       skills: skillData.skills,
     },
+    revalidate: 60 * 60, // a cada 1h
   };
 };

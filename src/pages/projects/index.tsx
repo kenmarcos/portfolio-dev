@@ -58,6 +58,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       projects: data.projects,
     },
+    revalidate: 60 * 60, // a cada 1h
   };
 };
 
