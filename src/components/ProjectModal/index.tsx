@@ -40,6 +40,9 @@ export const ProjectModal = (props: ProjectModalProps) => {
                 width={600}
                 height={500}
                 priority
+                quality={100}
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mMMvAYAAX4BKd5Md4EAAAAASUVORK5CYII="
               />
             </div>
 

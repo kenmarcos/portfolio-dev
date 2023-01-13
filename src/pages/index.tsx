@@ -81,6 +81,7 @@ export default function Home(props: HomeProps) {
                   width={38}
                   height={38}
                   alt="Emoji de Saudação"
+                  quality={100}
                 />
               </h1>
 

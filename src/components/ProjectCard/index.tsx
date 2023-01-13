@@ -24,6 +24,9 @@ export const ProjectCard = (props: ProjectCardProps) => {
           alt={`Imagem ${props.project.name}`}
           width={300}
           height={200}
+          quality={100}
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mMMvAYAAX4BKd5Md4EAAAAASUVORK5CYII="
         />
         <div>
           <p>{props.project.description}</p>
