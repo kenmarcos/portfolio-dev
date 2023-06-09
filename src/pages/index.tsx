@@ -233,6 +233,7 @@ export const getStaticProps = async () => {
         }
       }
     `,
+    fetchPolicy: "network-only",
   });
 
   const { data: skillData } = await client.query({

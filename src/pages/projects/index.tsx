@@ -52,6 +52,7 @@ export const getStaticProps: GetStaticProps = async () => {
         }
       }
     `,
+    fetchPolicy: "network-only",
   });
 
   return {
